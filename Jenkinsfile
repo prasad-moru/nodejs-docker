@@ -8,7 +8,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('Sonar-qube') {
-                    sh 'sonar-scanner -Dsonar.projectKey=nodejs-docker -Dsonar.sources=. -Dsonar.host.url=http://18.232.152.239:9000 -Dsonar.login=sonar'
+                    sh 'sonar-scanner -Dsonar.projectKey=nodejs-docker -Dsonar.sources=. -Dsonar.host.url=http://18.232.152.239:9000 -Dsonar.login=${sonar}'
                 }
             }
         }
