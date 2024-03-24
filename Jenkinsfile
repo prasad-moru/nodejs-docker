@@ -12,13 +12,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Prepare Environment') {
+            steps {
+                script {
+                    sh 'docker rmi -f ${ECR_REPOSITORY_URL}:latest || true'
+                }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Login to ECR
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REPOSITORY_URL}'
-
-                    // Build the Docker image
                     sh 'docker build -t ${ECR_REPOSITORY_URL}:latest .'
                 }
             }
@@ -26,7 +31,6 @@ pipeline {
         stage('Push to AWS ECR') {
             steps {
                 script {
-                    // Push the image to ECR
                     sh 'docker push ${ECR_REPOSITORY_URL}:latest'
                 }
             }
