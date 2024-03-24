@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        // Define the ECR repository URL
         ECR_REPOSITORY_URL = '377116394631.dkr.ecr.us-east-1.amazonaws.com/nodejs-docker'
     }
     stages {
