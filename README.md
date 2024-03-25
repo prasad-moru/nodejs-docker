@@ -12,9 +12,9 @@ node server.js
 
 git clone https://github.com/prasad0808/nodejs-docker.git
 
+```bash
 this job runs with webhook
-
-
+```
 
 # Docker Compose Nodejs and MySQL Local Env Setup
 
